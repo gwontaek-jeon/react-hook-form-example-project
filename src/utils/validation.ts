@@ -9,5 +9,5 @@ export function isDomain(value: string) {
 }
 
 export function isPath(value: string) {
-  return /^\/.*$/.test(value) || 'Must start with "/"'
+  return /^(\/[^\/]+){0,2}\/?$/gm.test(value) || 'Must be a valid path'
 }

@@ -61,7 +61,11 @@ function CloudFrontCreateDistributions() {
                     label="Origin domain"
                     description="description"
                     placeholder="Choose origin domain"
-                    items={['a', 'b', 'c']}
+                    items={[
+                      'react-project.s3.ap-northeast-1.amazonaws.com',
+                      'ts-project.s3.ap-northeast-1.amazonaws.com',
+                      'react-hook-form-example-project.s3.ap-northeast-1.amazonaws.com',
+                    ]}
                     setValue={setValue}
                     register={register}
                     trigger={trigger}
@@ -140,7 +144,7 @@ function CloudFrontCreateDistributions() {
             </ExpansionPanel>
           </Card>
           <div className="flex-row">
-            <Button type="submit">Cancel</Button>
+            <Button type="reset">Cancel</Button>
             <Button type="submit" color="orange">
               Create distribution
             </Button>

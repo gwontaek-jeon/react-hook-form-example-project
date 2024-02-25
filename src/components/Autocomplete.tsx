@@ -24,11 +24,12 @@ const Wrapper = styled.div`
       height: 30px;
       display: flex;
       width: 75%;
-      padding-left: 10px;
-      padding-right: 10px;
+      padding-left: 20px;
+      padding-right: 20px;
       line-height: 1;
       align-items: center;
       background-color: white;
+      font-size: 14px;
     }
     li:hover {
       background-color: #eeeeee;
@@ -44,10 +45,10 @@ const Autocomplete: React.FC<AutocompleteProps> = ({ id, items, trigger, setValu
   function handleFocus() {
     setIsItemsOpen(true)
   }
-  function handleItemClick(item: string) {
+  async function handleItemClick(item: string) {
     setValue(id, item)
-    trigger(id)
-    setIsItemsOpen(false)
+    const result = await trigger(id)
+    if (result) setIsItemsOpen(false)
   }
   function handleInputBlur() {
     setIsItemsOpen(false)

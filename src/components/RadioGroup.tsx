@@ -38,7 +38,14 @@ const RadioGroup: React.FC<InputProps> = ({ id, description, label, options, ...
       <div>
         {options.map((option, index) => (
           <RadioItem key={option.id}>
-            <Input type="radio" id={option.id} name={id} {...props} defaultChecked={index === 0} />
+            <Input
+              type="radio"
+              id={option.id}
+              name={id}
+              value={option.value}
+              {...props}
+              defaultChecked={index === 0}
+            />
             <label htmlFor={option.id}>
               <p>{option.label}</p>
               {option.description ? <p className="description">{option.description}</p> : undefined}
