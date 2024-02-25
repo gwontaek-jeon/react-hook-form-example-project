@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useExpansionContext } from './ExpansionPanel'
-const Wrapper = styled.div`
-  background-color: #fafafa;
-  padding: 20px 24px;
-  border-bottom: thin solid #eaeded;
+const Wrapper = styled.div<{ $dense: Boolean | undefined }>`
+  color: ${({ $dense }) => ($dense ? '#545b64' : 'black')};
+  background-color: ${({ $dense }) => ($dense ? 'rgba(0,0,0,0)' : '#fafafa')};
+  padding: ${({ $dense }) => ($dense ? '10px 10px' : '20px 24px')};
+  font-size: ${({ $dense }) => ($dense ? '14px' : '20px')};
   cursor: pointer;
+  font-weight: bolder;
 
   .arrow-down {
     display: inline-block;
@@ -13,7 +15,7 @@ const Wrapper = styled.div`
     height: 0;
     border-top: 6px solid transparent;
     border-bottom: 6px solid transparent;
-    border-left: 10px solid black;
+    border-left: 10px solid ${({ $dense }) => ($dense ? '#545b64' : 'black')};
     margin-right: 12px;
   }
 
@@ -24,14 +26,15 @@ const Wrapper = styled.div`
   }
 `
 
-const ExpansionPanelTitle: React.FC<{ children: string }> = ({ children }) => {
+const ExpansionPanelTitle: React.FC<{ dense?: Boolean; children: string }> = ({
+  dense,
+  children,
+}) => {
   const { isOpen, toggleContent } = useExpansionContext()
   return (
-    <Wrapper onClick={() => toggleContent()}>
-      <h3>
-        <div className={`arrow-down ${isOpen ? 'active' : undefined}`}></div>
-        {children}
-      </h3>
+    <Wrapper $dense={dense ? dense : undefined} onClick={() => toggleContent()}>
+      <div className={`arrow-down ${isOpen ? 'active' : undefined}`}></div>
+      {children}
     </Wrapper>
   )
 }

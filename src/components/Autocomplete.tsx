@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import TextInput from './TextInput'
-import { InputProps } from './TextInput'
+import Input from './Input'
+import { InputProps } from './Input'
 import { FieldValues, UseFormSetValue, UseFormTrigger } from 'react-hook-form'
 
 interface AutocompleteProps extends InputProps {
@@ -56,7 +56,7 @@ const Autocomplete: React.FC<AutocompleteProps> = ({ id, items, trigger, setValu
 
   return (
     <Wrapper onBlur={handleInputBlur}>
-      <TextInput id={id} {...props} onFocus={handleFocus} autoComplete="off" />
+      <Input id={id} {...props} onFocus={handleFocus} autoComplete="off" />
       {isItemsOpen ? (
         <ul>
           {items.map((item, index) => (

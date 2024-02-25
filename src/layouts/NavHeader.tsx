@@ -7,6 +7,7 @@ const Nav = styled.nav`
   color: white;
   width: 100vw;
   padding: 8px;
+  z-index: 1000;
 `
 function NavHeader() {
   return <Nav>AWS</Nav>

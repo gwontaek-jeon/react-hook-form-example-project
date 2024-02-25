@@ -4,7 +4,7 @@ import ExpansionPanelContent from './ExpansionPanelContent'
 import styled from 'styled-components'
 
 interface ExpansionPanelInterface {
-  Title: React.FC<{ children: string }>
+  Title: React.FC<{ dense?: Boolean; children: string }>
   Content: React.FC<{ children: React.ReactNode }>
 }
 export type ExpansionPanelState = {

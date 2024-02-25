@@ -2,9 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import InputHeader from './InputHeader'
 import { InputHeaderProps } from './InputHeader'
+import { FieldValues, UseFormRegister } from 'react-hook-form'
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>, InputHeaderProps {
+interface RadioGroupProps extends React.InputHTMLAttributes<HTMLInputElement>, InputHeaderProps {
   id: string
+  register: UseFormRegister<FieldValues>
   options: Array<{
     id: string
     label: string
@@ -31,7 +33,14 @@ const RadioItem = styled.div`
   }
 `
 
-const RadioGroup: React.FC<InputProps> = ({ id, description, label, options, ...props }) => {
+const RadioGroup: React.FC<RadioGroupProps> = ({
+  id,
+  description,
+  label,
+  options,
+  register,
+  ...props
+}) => {
   return (
     <div>
       <InputHeader id={id} label={label} description={description ? description : undefined} />
@@ -41,10 +50,10 @@ const RadioGroup: React.FC<InputProps> = ({ id, description, label, options, ...
             <Input
               type="radio"
               id={option.id}
-              name={id}
               value={option.value}
-              {...props}
               defaultChecked={index === 0}
+              {...register(id)}
+              {...props}
             />
             <label htmlFor={option.id}>
               <p>{option.label}</p>

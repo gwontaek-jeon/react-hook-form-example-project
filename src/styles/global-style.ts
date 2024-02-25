@@ -15,19 +15,6 @@ export const GlobalStyle = createGlobalStyle`
       margin: 0
     }
 
-    .flex-column {
-      display: flex;
-      flex-direction: column;
-      row-gap: 20px;
-    }
-
-    .flex-row {
-      display: flex;
-      flex-direction: row;
-      column-gap: 20px;
-      justify-content: end;
-    }
-
     label {
       font-size: 14px;
       padding-bottom: 4px;

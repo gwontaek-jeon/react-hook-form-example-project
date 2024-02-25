@@ -18,7 +18,7 @@ const Wrapper = styled.div`
     margin-top: 8px;
   }
 `
-const Input = styled.input<{ $errors: any }>`
+const StyledInput = styled.input<{ $errors: any }>`
   display: block;
   width: 75%;
   border-radius: 2px;
@@ -29,7 +29,7 @@ const Input = styled.input<{ $errors: any }>`
   font-weight: bolder;
 `
 
-const TextInput: React.FC<InputProps> = ({
+const Input: React.FC<InputProps> = ({
   id,
   label,
   description,
@@ -41,13 +41,7 @@ const TextInput: React.FC<InputProps> = ({
   return (
     <Wrapper>
       <InputHeader id={id} label={label} description={description} />
-      <Input
-        type="text"
-        $errors={errors?.[id]}
-        id={id}
-        {...register(id, registerOptions)}
-        {...props}
-      />
+      <StyledInput $errors={errors?.[id]} id={id} {...register(id, registerOptions)} {...props} />
       <ErrorMessage
         errors={errors}
         name={id}
@@ -59,4 +53,4 @@ const TextInput: React.FC<InputProps> = ({
   )
 }
 
-export default TextInput
+export default Input
