@@ -13,8 +13,10 @@ const Wrapper = styled.div`
     display: flex;
   }
 `
-
-const ExpansionPanelContent: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export interface ExpansionPanelContentProps {
+  children: React.ReactNode
+}
+const ExpansionPanelContent: React.FC<ExpansionPanelContentProps> = ({ children }) => {
   const { isOpen } = useExpansionContext()
   return <Wrapper className={isOpen ? 'open' : undefined}>{children}</Wrapper>
 }

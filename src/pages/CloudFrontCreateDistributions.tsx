@@ -59,7 +59,7 @@ function CloudFrontCreateDistributions() {
       </div>
       <form onSubmit={onSubmit}>
         <Card>
-          <ExpansionPanel>
+          <ExpansionPanel open>
             <ExpansionPanel.Title>Origin</ExpansionPanel.Title>
             <ExpansionPanel.Content>
               <Autocomplete

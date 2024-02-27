@@ -1,10 +1,11 @@
 import React, { useState, useContext, createContext } from 'react'
 import ExpansionPanelTitle from './ExpansionPanelTitle'
+import { ExpansionPanelTitleProps } from './ExpansionPanelTitle'
 import ExpansionPanelContent from './ExpansionPanelContent'
 import styled from 'styled-components'
 
 interface ExpansionPanelInterface {
-  Title: React.FC<{ dense?: Boolean; children: string }>
+  Title: React.FC<ExpansionPanelTitleProps>
   Content: React.FC<{ children: React.ReactNode }>
 }
 export type ExpansionPanelState = {
@@ -27,10 +28,15 @@ export function useExpansionContext() {
   return ctx
 }
 
-const ExpansionPanel: React.FC<{ children: React.ReactNode }> & ExpansionPanelInterface = ({
+export interface ExpansionPanelProps {
+  open?: Boolean
+  children: React.ReactNode
+}
+const ExpansionPanel: React.FC<ExpansionPanelProps> & ExpansionPanelInterface = ({
+  open,
   children,
 }) => {
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(open ? true : false)
   function toggleContent() {
     setIsOpen((prevBool: Boolean) => {
       return !prevBool

@@ -26,10 +26,11 @@ const Wrapper = styled.div<{ $dense: Boolean | undefined }>`
   }
 `
 
-const ExpansionPanelTitle: React.FC<{ dense?: Boolean; children: string }> = ({
-  dense,
-  children,
-}) => {
+export interface ExpansionPanelTitleProps {
+  dense?: Boolean
+  children: React.ReactNode
+}
+const ExpansionPanelTitle: React.FC<ExpansionPanelTitleProps> = ({ dense, children }) => {
   const { isOpen, toggleContent } = useExpansionContext()
   return (
     <Wrapper $dense={dense ? dense : undefined} onClick={() => toggleContent()}>

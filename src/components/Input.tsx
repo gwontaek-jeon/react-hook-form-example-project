@@ -8,8 +8,8 @@ import { InputHeaderProps } from './InputHeader'
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>, InputHeaderProps {
   id: string
   register: UseFormRegister<FieldValues>
-  registerOptions: RegisterOptions<FieldValues>
-  errors: FieldErrors<FieldValues>
+  registerOptions: RegisterOptions
+  errors: FieldErrors
 }
 const Wrapper = styled.div`
   & .error-message {
